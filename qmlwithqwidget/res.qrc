@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/"/>
+    <qresource prefix="/ui">
+        <file>qml.qml</file>
+        <file>dynamic.qml</file>
+    </qresource>
+</RCC>

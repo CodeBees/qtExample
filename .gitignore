@@ -27,3 +27,4 @@
 *.exe
 *.out
 *.app
+/qmlwithqwidget/qmlwithqwidget.pro.user
