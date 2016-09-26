@@ -50,13 +50,24 @@ Window {
 
         }
 
+
+        ListModel {
+            id:listComboBox
+            ListElement { key: "First"; value: 123 }
+            ListElement { key: "Second"; value: 456 }
+            ListElement { key: "Third"; value: 789 }
+        }
+
+
         ComboBox {
             id: comboBox1
             x: 31
             y: 164
             width: 125
             height: 33
-            z: 1
+            model:listComboBox
+            textRole: "key"
+
         }
 
         ComboBox {
@@ -65,6 +76,8 @@ Window {
             y: 218
             width: 125
             height: 34
+            textRole: "value"
+            model:listComboBox
         }
 
         GroupBox {
