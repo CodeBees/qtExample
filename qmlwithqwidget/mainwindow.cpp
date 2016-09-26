@@ -23,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_quickWidget->setSource(source);
 
     ui->dynamicQmlEmber->addWidget(m_quickWidget);
+
+
     //m_quickWidget->setParent( );
 
 }
