@@ -1,0 +1,2 @@
+module com.ink.qmlcomponents
+plugin QMLExtendPlugin
