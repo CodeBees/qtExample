@@ -24,11 +24,19 @@ MainWindow::~MainWindow()
 }
 void MainWindow::initializeGL()
 {
-
+    resizeGL(this->width(), this->height());
 }
 
 void MainWindow::resizeGL(int w, int h)
 {
+
+    // Initialize Projection Matrix
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glViewport(0, 0, w, h);
+    qreal aspectRatio = qreal(w) / qreal(h);
+    glOrtho(-1 * aspectRatio, 1 * aspectRatio, -1, 1, 1, -1);
+
 
 }
 
@@ -36,16 +44,29 @@ void MainWindow::resizeGL(int w, int h)
 void MainWindow::paintGL()
 {
 
+    //The geometric primitive types supported by OpenGL are points, lines, linestrips, line loops,
+    //polygons, quads, quad strips, triangles, triangle strips, and triangle fans.
+
     // Initialize clear color (cornflower blue)
     glClearColor(0.39f, 0.58f, 0.93f, 1.f);
     // Clear color buffer
     glClear(GL_COLOR_BUFFER_BIT);
-    // Render quad
     glBegin(GL_QUADS);
     glVertex2f(-0.5f, -0.5f);
     glVertex2f(0.5f, -0.5f);
     glVertex2f(0.5f, 0.5f);
     glVertex2f(-0.5f, 0.5f);
+    glEnd();
+    glBegin(GL_QUADS);
+    glColor3f(1.f, 0.f, 0.f); glVertex2f(-0.8f, -0.8f);
+    glColor3f(1.f, 1.f, 0.f); glVertex2f(0.3f, -0.8f);
+    glColor3f(0.f, 1.f, 0.f); glVertex2f(0.3f, 0.3f);
+    glColor3f(0.f, 0.f, 1.f); glVertex2f(-0.8f, 0.3f);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glColor3f(1.f, 0.f, 0.f); glVertex2f(-0.4f, -0.4f);
+    glColor3f(0.f, 1.f, 0.f); glVertex2f(0.8f, -0.1f);
+    glColor3f(0.f, 0.f, 1.f); glVertex2f(-0.1f, 0.8f);
     glEnd();
     glFlush();
 
@@ -53,9 +74,12 @@ void MainWindow::paintGL()
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-     paintGL();
+    paintGL();
 }
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
+
+    resizeGL(this->width(), this->height());
+    this->update();
 
 }
