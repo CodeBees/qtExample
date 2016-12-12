@@ -2,7 +2,16 @@
 #define MAINWINDOW_H
 
 
+#include <QSurfaceFormat>
+#include <QOpenGLFunctions>
+#include <QtOpenGL>
+#include <GL/glu.h>
+
+
 #include <QOpenGLWindow>
+
+
+
 class MainWindow : public QOpenGLWindow
 {
   Q_OBJECT
@@ -15,6 +24,12 @@ class MainWindow : public QOpenGLWindow
     virtual void paintGL();
     void paintEvent(QPaintEvent *event);
     void resizeEvent(QResizeEvent *event);
+private:
+  QOpenGLContext* context;
+  QOpenGLFunctions* openGLFunctions;
+
+
+
 };
 
 
