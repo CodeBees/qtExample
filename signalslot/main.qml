@@ -20,14 +20,29 @@ ApplicationWindow {
 
         Connections
         {
+            //qml 连接 qml 中函数
             target: button1;
-
             onClicked:
             {
                 setLabelText();
             }
 
         }
+
+
+        Connections
+        {
+           //qml 连接 c++ 信号
+           target:interaction
+           onConnectcppsignal:
+           {
+                label2.text=strMsg;
+           }
+
+        }
+
+
+
 
         Button {
             id: button1
@@ -62,9 +77,15 @@ ApplicationWindow {
             width: 147
             height: 58
             text: qsTr("Button")
+            onClicked:
+            {
+                //qml 调用 c++函数
+                interaction.test();
+            }
         }
 
         Label {
+
             id: label2
             x: 202
             y: 91
