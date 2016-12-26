@@ -7,6 +7,14 @@ ApplicationWindow {
     height: 480
     title: qsTr("Hello World")
 
+    signal sendMessageSigal(string msg)
+
+    function getMessage(msg)
+    {
+        label3.text=msg;
+
+        sendMessageSigal.disconnect(getMessage);
+    }
 
     function setLabelText()
     {
@@ -15,8 +23,8 @@ ApplicationWindow {
 
     Rectangle
     {
+        color: "#f9f9f9"
         anchors.fill: parent
-        color:"#888888"
 
         Connections
         {
@@ -42,15 +50,13 @@ ApplicationWindow {
         }
 
 
-
-
         Button {
             id: button1
             x: 37
             y: 27
             width: 147
             height: 58
-            text: qsTr("Button")
+            text: qsTr("1")
 
         }
 
@@ -63,7 +69,7 @@ ApplicationWindow {
             color: "#2c7af2"
             text: qsTr("Label")
             font.family: "Verdana"
-            font.pointSize: 26
+            font.pointSize: 12
             style: Text.Normal
             styleColor: "#f20d0d"
             verticalAlignment: Text.AlignVCenter
@@ -76,7 +82,7 @@ ApplicationWindow {
             y: 91
             width: 147
             height: 58
-            text: qsTr("Button")
+            text: qsTr("2")
             onClicked:
             {
                 //qml 调用 c++函数
@@ -91,19 +97,53 @@ ApplicationWindow {
             y: 91
             width: 371
             height: 58
-            color: "#2c7af2"
+            color: "#f22c2c"
             text: qsTr("Label")
             style: Text.Normal
             styleColor: "#f20d0d"
             horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 26
+            font.pointSize: 12
             font.family: "Verdana"
             verticalAlignment: Text.AlignVCenter
         }
 
+        Button {
+            id: button3
+            x: 37
+            y: 163
+            width: 147
+            height: 58
+            text: qsTr("3")
 
+            onClicked:
+            {
+                sendMessageSigal("qml signal connect with qml fucntion");
+            }
+        }
 
+        Label {
+            id: label3
+            x: 202
+            y: 163
+            width: 371
+            height: 58
+            color: "#2cf242"
+            text: qsTr("Label")
+            style: Text.Normal
+            styleColor: "#f20d0d"
+            horizontalAlignment: Text.AlignHCenter
+            font.pointSize: 12
+            font.family: "Verdana"
+            verticalAlignment: Text.AlignVCenter
+        }
 
     }
+
+    Component.onCompleted:
+    {
+        //qml 信号连接 qml函数
+        sendMessageSigal.connect(getMessage);
+    }
+
 
 }
