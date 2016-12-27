@@ -83,7 +83,7 @@ ApplicationWindow {
             y: 91
             width: 147
             height: 58
-            text: qsTr("2")
+            text: qsTr("emit")
             onClicked:
             {
                 //qml 调用 c++函数

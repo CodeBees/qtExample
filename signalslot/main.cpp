@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     if (textLabel)
     {
         //c++ 直接调用qml函数
-        auto bRet = QMetaObject::invokeMethod(textLabel, "setL4text");
+        QMetaObject::invokeMethod(textLabel, "setL4text");
 
     }
 
