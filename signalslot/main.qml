@@ -63,6 +63,7 @@ ApplicationWindow {
 
         Label {
             id: label1
+            objectName: "objNameL1"
             x: 202
             y: 27
             width: 371
@@ -94,6 +95,7 @@ ApplicationWindow {
         Label {
 
             id: label2
+            objectName: "objNameL2"
             x: 202
             y: 91
             width: 371

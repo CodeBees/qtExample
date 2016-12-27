@@ -1,6 +1,9 @@
 ﻿#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml>
+#include <QQuickItem>
+#include <QCursor>
+
 #include "interaction.h"
 
 int main(int argc, char *argv[])
@@ -36,6 +39,26 @@ int main(int argc, char *argv[])
         QMetaObject::invokeMethod(textLabel, "setL4text");
 
     }
+
+   // modify the item's properties using QObject::setProperty() or QQmlProperty:
+
+    QObject* textLabel1 = root->findChild<QObject*>("objNameL1");
+    if (textLabel1)
+    {
+        //textLabel1->setProperty("color","yellow");
+        QQmlProperty(textLabel1, "color").write("#888888");
+    }
+
+    //the ListView will have multiple children with the same objectName
+    QObject* textLabel2 = root->findChild<QObject*>("objNameL2");
+    if (textLabel2)
+    {
+        QQuickItem *item = qobject_cast<QQuickItem*>(textLabel2);
+        QCursor cursor(Qt::WaitCursor);
+        item->setCursor(cursor);
+    }
+
+
 
 
     return app.exec();
