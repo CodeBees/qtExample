@@ -17,6 +17,8 @@ signals:
     void valueChanged(int value);
 public slots:
     void setValue(int value);
+    void cppSlot(const QVariant &v);
+
 public:
     //想在qml被调用，必须被Q_INVOKABLE处理
     Q_INVOKABLE void  test();

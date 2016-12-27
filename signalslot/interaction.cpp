@@ -2,6 +2,7 @@
 #include <qdebug.h>
 #include <QTime>
 #include <iostream>
+#include <QQuickItem>
 
 void outPutInfo()
 {
@@ -49,4 +50,12 @@ void CInteraction::setValue(int value)
 
     qDebug()<<"value:"<<value;
 
+}
+
+
+void CInteraction::cppSlot(const QVariant &v) {
+    qDebug() << "Called the C++ slot with value:" << v;
+
+    QQuickItem *item =qobject_cast<QQuickItem*>(v.value<QObject*>());
+    qDebug() << "Item dimensions:" << item->width()<< item->height();
 }

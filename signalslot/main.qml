@@ -173,6 +173,24 @@ ApplicationWindow {
             text: "Quit"
         }
 
+        Button {
+
+            signal qmlSignal(var anObject)
+            id: button5
+            objectName: "objNameB5"
+            x: 45
+            y: 370
+            width: 147
+            height: 58
+            text: "emit Item"
+
+            onClicked:
+            {
+                button5.qmlSignal(button5);
+            }
+
+        }
+
     }
 
     Component.onCompleted:

@@ -59,6 +59,19 @@ int main(int argc, char *argv[])
     }
 
 
+    QObject* obj = root->findChild<QObject*>("objNameB5");
+    if (obj)
+    {
+        //When a QML object type is used as a signal parameter, the parameter should use var as the type,
+        //and the value should be received in C++ using the QVariant type
+        QObject::connect(obj, SIGNAL(qmlSignal(QVariant)), pInteraction, SLOT(cppSlot(QVariant)));
+    }
+
+
+
+
+
+
 
 
     return app.exec();
