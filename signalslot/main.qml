@@ -8,6 +8,9 @@ ApplicationWindow {
     title: qsTr("Hello World")
 
     signal sendMessageSigal(string msg)
+    signal send();
+
+    onSend: console.log("Send clicked")
 
     function getMessage(msg)
     {
@@ -166,8 +169,8 @@ ApplicationWindow {
         Button {
             id: button4
             objectName: "quitButton"
-            x: 247
-            y: 370
+            x: 435
+            y: 368
             width: 147
             height: 58
             text: "Quit"
@@ -175,6 +178,8 @@ ApplicationWindow {
 
         Button {
 
+            //signal <name>[([<type> <parameter name>[, ...]])]
+            //A signal is emitted by invoking the signal as a method.
             signal qmlSignal(var anObject)
             id: button5
             objectName: "objNameB5"
@@ -188,6 +193,19 @@ ApplicationWindow {
             {
                 button5.qmlSignal(button5);
             }
+
+        }
+
+        Button {
+            id: button6
+            x: 247
+            y: 370
+            width: 147
+            height: 58
+            text: "signal with signal "
+            Component.onCompleted: {
+                  button6.clicked.connect(send)
+              }
 
         }
 
