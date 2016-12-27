@@ -18,12 +18,13 @@ ApplicationWindow {
 
     function setLabelText()
     {
-         label1.text = "Connections example";
+        label1.text = "Connections example";
     }
 
     Rectangle
     {
         color: "#f9f9f9"
+
         anchors.fill: parent
 
         Connections
@@ -40,12 +41,12 @@ ApplicationWindow {
 
         Connections
         {
-           //qml 连接 c++ 信号
-           target:interaction
-           onConnectcppsignal:
-           {
+            //qml 连接 c++ 信号
+            target:interaction
+            onConnectcppsignal:
+            {
                 label2.text=strMsg;
-           }
+            }
 
         }
 
@@ -135,6 +136,39 @@ ApplicationWindow {
             font.pointSize: 12
             font.family: "Verdana"
             verticalAlignment: Text.AlignVCenter
+        }
+
+        Label {
+
+            function setL4text()
+            {
+                label4.text="QMetaObject::invokeMethod(...)"
+            }
+
+            id: label4
+            objectName: "objNameL4"
+            x: 202
+            y: 249
+            width: 371
+            height: 58
+            color: "#9a2cf2"
+            text: qsTr("Label")
+            style: Text.Normal
+            styleColor: "#f20d0d"
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.family: "Verdana"
+            font.pointSize: 12
+        }
+
+        Button {
+            id: button4
+            objectName: "quitButton"
+            x: 247
+            y: 370
+            width: 147
+            height: 58
+            text: "Quit"
         }
 
     }

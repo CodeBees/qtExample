@@ -17,7 +17,7 @@ signals:
 public slots:
 
 public:
-
+    //想在qml被调用，必须被Q_INVOKABLE处理
     Q_INVOKABLE void  test();
 };
 
