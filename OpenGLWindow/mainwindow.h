@@ -5,7 +5,7 @@
 #include <QSurfaceFormat>
 #include <QOpenGLFunctions>
 #include <QtOpenGL>
-#include <GL/glu.h>
+//#include <GL/glu.h>
 
 
 #include <QOpenGLWindow>
