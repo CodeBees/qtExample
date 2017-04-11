@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qml/UserDefineRect.qml</file>
+        <file>qml2/RedRect.qml</file>
+    </qresource>
+</RCC>
